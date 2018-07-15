@@ -1,8 +1,9 @@
-function getDataFromAPI(menuItem, callback) {
+function getDataFromAPI() {
 $.ajax({
   url: 'https://webcamstravel.p.mashape.com/webcams/list/country=ES',
   // url: "https://webcamstravel.p.mashape.com/webcams/list/country=Spain?lang=en&show=webcams%3Aimage%2Clocation",
   data: {show:'webcams:image,location,player'},
+  orderby: 'popularity',
   dataType: 'json',
   type: 'GET',
   headers: {"X-Mashape-Key": 'cgDecNwco7mshVPaItCd9ogfs5nnp1OCnOVjsn8Yn430nwywin',
@@ -11,10 +12,9 @@ $.ajax({
   	console.log(data);
   	console.log(data.result.webcams["0"].title);
   	let webcamArray = data.result.webcams.map(function(webcam) {
-  		return `<img class="cam-results" aria-label="Webcam Result" src="${webcam.image.current.thumbnail}">`;
+  		return `<img class="cam-results" aria-label="Webcam Result" src="${webcam.image.current.image}">`;
   	});
   	$('#js-results').html(webcamArray.join(''));
-
   }
 });
 }
