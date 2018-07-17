@@ -1,7 +1,6 @@
 function getDataFromAPI() {
 $.ajax({
   url: 'https://webcamstravel.p.mashape.com/webcams/list/country=ES',
-  // url: "https://webcamstravel.p.mashape.com/webcams/list/country=Spain?lang=en&show=webcams%3Aimage%2Clocation",
   data: {show:'webcams:image,location,player'},
   orderby: 'popularity',
   dataType: 'json',
@@ -12,11 +11,31 @@ $.ajax({
     console.log(data);
     console.log(data.result.webcams["0"].title);
     let webcamArray = data.result.webcams.map(function(webcam) {
-      return `<iframe class="cam-results" aria-label="Webcam Result" src="${webcam.player.day.embed}" height="200" width="400" style="border:none"></iframe>`;
+      return `
+      <iframe class="cam-results col-4" aria-label="Webcam Result" src="${webcam.player.day.embed}" 
+      height="200" width="400" style="border:none"></iframe>`;
     });
     $('#js-results').html(webcamArray.join(''));
   }
 });
 }
+
+// function searchFunction() {
+//   let filter, input, ul, li, a, i;
+//   input = $('country-search');
+//   filter = input.value.toUpperCase();
+//   ul = $('country-list');
+//   li = $('country');
+
+//   for (i = 0; i < li.length; i++) {
+//     a = li{i}.$("a") [0];
+//     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+//       li[i].style.display = "";
+//     } else {
+//       li[i].style.display = 'none';
+//     }
+//     }
+//   }
+
 
 getDataFromAPI();

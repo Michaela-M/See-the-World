@@ -1,0 +1,45 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.cam-results {
+	padding: 5px;
+}
+
+.country-search {
+/*	background-image: url(https://image.ibb.co/n53WjJ/if_search_find_magnify_glass_2203508.png);*/
+	font-size: 16px;
+	padding: 12px 20px 12px 40px
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+.country-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: none;
+}
+
+.country-search:hover .country-list,
+.country-search:focus .country-list {
+	display: block
+}
+
+.country {
+	background-color: #fff;
+	padding: 2px;
+	font-size: 16px;
+	color: black;
+	display: block;
+	width: 180px;
+}
+
+.country:hover {
+	background-color: #eee;
+}
