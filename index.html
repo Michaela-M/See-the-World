@@ -9,18 +9,11 @@
   <body>
     <header role="banner"><h1 class="col-12">See the World</h1></header>
 
-  <nav>
-    <input type="text" id="country-search" class="country-search" name="search-country" onekeyup="searchFunction" placeholder="Choose a country">
-        <ul class="country-list col-4">
-          <li><a href="#" class="country">Spain</a></li>
-          <li><a href="#" class="country">US</a></li>
-          <li><a href="#" class="country">Slovenia</a></li>
-          <li><a href="#" class="country">Iran</a></li>
-        </ul>
-  </nav>
+    <section role="region" class="col-4" id="country-list"></section>
 
     <section role="region" id="js-results"></section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="index.js"></script>
+    <script src="store.js"></script>
   </body>
 </html>

@@ -20,6 +20,19 @@ $.ajax({
 });
 }
 
+function displayList() {
+  console.log('`displayList` ran');
+  let countryList = STORE[countryArray];
+  const countryInput = `
+    <input type="text" id="country-search" class="country-search" name="search-country" onekeyup="searchFunction" placeholder="Choose a country">
+        <ul class="country-list col-4">
+          <li><a href="#" class="country">${countryList.cname}</a></li>
+        </ul>`;
+  $('#country-list').html(countryInput);
+}
+
+
+
 // function searchFunction() {
 //   let filter, input, ul, li, a, i;
 //   input = $('country-search');
@@ -37,5 +50,5 @@ $.ajax({
 //     }
 //   }
 
-
+displayList();
 getDataFromAPI();
