@@ -22,18 +22,21 @@ $.ajax({
 
 function displayList() {
   console.log('`displayList` ran');
-  let countryList = STORE[countryArray];
+  const countryList = countryArray;
   const countryInput = `
-    <input type="text" id="country-search" class="country-search" name="search-country" onekeyup="searchFunction" placeholder="Choose a country">
-        <ul class="country-list col-4">
-          <li><a href="#" class="country">${countryList.cname}</a></li>
-        </ul>`;
+    <select id="country-select">
+        <option class="country-list" value="${countryList[0].ccode}" label="${countryList[0].cname}">${countryList[0].ccode}</option>
+        <option class="country-list" value="ES" label="Spain">ES</option>
+        <option class="country-list" value="IS" label="Iceland">IS</option>
+        <option class="country-list" value="IR" label="Iran">IR</option>
+    </select>
+   `;
   $('#country-list').html(countryInput);
 }
 
 
 
-// function searchFunction() {
+// function searchFunction() { 
 //   let filter, input, ul, li, a, i;
 //   input = $('country-search');
 //   filter = input.value.toUpperCase();

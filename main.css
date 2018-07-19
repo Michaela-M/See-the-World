@@ -20,10 +20,8 @@
 }
 
 .country-list {
-	list-style-type: none;
 	padding: 0;
 	margin: 0;
-	display: none;
 }
 
 .country-search:hover .country-list,
@@ -42,4 +40,8 @@
 
 .country:hover {
 	background-color: #eee;
+}
+
+.list-section {
+	padding-bottom: 30px;
 }
