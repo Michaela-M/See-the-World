@@ -1,4 +1,4 @@
-function getDataFromAPI() {
+function getWebcamAPIData() {
 $.ajax({
   url: 'https://webcamstravel.p.mashape.com/webcams/list/country=ES',
   data: {show:'webcams:image,location,player'},
@@ -15,35 +15,21 @@ $.ajax({
       <iframe class="cam-results col-4" aria-label="Webcam Result" src="${webcam.player.day.embed}" 
       height="200" width="400" style="border:none"></iframe>`;
     });
-    $('#js-results').html(webcamArray.join(''));
+    $('#js-cam-results').html(webcamArray.join(''));
   }
 });
 }
 
-// function displayList() {
-//   console.log('`displayList` ran');
-//   const countryList = countryArray;
-//   const countryInput = `
-//     <select id="country-select">
-//         <option class="country-list" value="${countryList[0].ccode}" label="${countryList[0].cname}">${countryList[0].ccode}</option>
-//         <option class="country-list" value="ES" label="Spain">ES</option>
-//         <option class="country-list" value="IS" label="Iceland">IS</option>
-//         <option class="country-list" value="IR" label="Iran">IR</option>
-//     </select>
-//    `;
-//   $('#country-list').html(countryInput);
-// }
-
 function displayList() {
   console.log('`displayList` ran');
   console.log(Object.keys(countryArray));
-  const countryArr = Object.keys(countryArray);
+  const countryKeys = Object.keys(countryArray);
   const optionsArray = [];
-  for (var i = 0; i <= countryArr.length; i++) {
+  for (var i = 0; i <= countryKeys.length; i++) {
     optionsArray.push(`<option class="country-list" value="${key}">${countryArray[key]}</option>`);
   }
 
-  const optionsHtml = Object.keys(countryArray).map(key => {
+  const optionsHtml = Object.keys(countryKeys).map((key, index) => {
     return `
     <option class="country-list" value="${key}">${countryArray[key]}</option>`
   });
@@ -54,27 +40,59 @@ function displayList() {
   $('#country-list').html(dropdownHtml);
 }
 
-if (!Object.keys) Object.keys = function(o) {
-  if (o !== Object(o))
-    throw new TypeError('Object.keys called on a non-object');
-  var k=[],p;
-  for (p in o) if (Object.prototype.hasOwnProperty.call(o,p)) k.push(p);
-  return k;
+
+// if (!Object.keys) Object.keys = function(o) {
+//   if (o !== Object(o))
+//     throw new TypeError('Object.keys called on a non-object');
+//   var k=[],p;
+//   for (p in o) if (Object.prototype.hasOwnProperty.call(o,p)) k.push(p);
+//   return k;
+// }
+
+
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+const APIkey = 'AIzaSyAh6hD7Q7RpUpIMVwPvmRH-pH4nByXYHis';
+
+
+function getDataFromAPI(searchTerm, callback) {
+  const settings = {
+    part: 'snippet',
+    key: APIkey,
+    q: 'Travel tips for Spain'
+  }
+  $.getJSON(YOUTUBE_SEARCH_URL, settings, callback);
 }
 
 
+function renderResult(result) {
+
+  if(result.id.kind === "youtube#video") {
+    return `
+    <iframe class="results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'> `;
+  } else if(result.id.kind === "youtube#channel") {
+    return `
+    <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}' height='200' width='400'></a>`;
+  }
+}
+
+function displayYouTubeSearchData(data) {
+  const results = data.items.map((item, index) => renderResult(item));
+  $('#js-results').html( results );
+}
+
+function watchSubmit() {
+  $('#country-select').on('change', 'select', event => {
+     alert(`Dropdown was modified to value: ${$('.country-list select').val()}`);
+   });
+}
+
+//     const query = 'Travel tips for Spain';
+//     getDataFromAPI(query, displayYouTubeSearchData);
+
+// $(watchSubmit);
 
 
-
-//   for (i = 0; i < li.length; i++) {
-//     a = li{i}.$("a") [0];
-//     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//       li[i].style.display = "";
-//     } else {
-//       li[i].style.display = 'none';
-//     }
-//     }
-//   }
 
 displayList();
+getWebcamAPIData();
 getDataFromAPI();
