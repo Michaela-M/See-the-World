@@ -1,4 +1,4 @@
-* {
+/** {
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 	text-decoration: none;
@@ -12,7 +12,7 @@
 }
 
 .country-search {
-/*	background-image: url(https://image.ibb.co/n53WjJ/if_search_find_magnify_glass_2203508.png);*/
+	background-image: url(https://image.ibb.co/n53WjJ/if_search_find_magnify_glass_2203508.png);
 	font-size: 16px;
 	padding: 12px 20px 12px 40px
 	border: 1px solid #ddd;
@@ -45,3 +45,4 @@
 .list-section {
 	padding-bottom: 30px;
 }
+*/

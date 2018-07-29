@@ -20,28 +20,51 @@ $.ajax({
 });
 }
 
+// function displayList() {
+//   console.log('`displayList` ran');
+//   const countryList = countryArray;
+//   const countryInput = `
+//     <select id="country-select">
+//         <option class="country-list" value="${countryList[0].ccode}" label="${countryList[0].cname}">${countryList[0].ccode}</option>
+//         <option class="country-list" value="ES" label="Spain">ES</option>
+//         <option class="country-list" value="IS" label="Iceland">IS</option>
+//         <option class="country-list" value="IR" label="Iran">IR</option>
+//     </select>
+//    `;
+//   $('#country-list').html(countryInput);
+// }
+
 function displayList() {
   console.log('`displayList` ran');
-  const countryList = countryArray;
-  const countryInput = `
-    <select id="country-select">
-        <option class="country-list" value="${countryList[0].ccode}" label="${countryList[0].cname}">${countryList[0].ccode}</option>
-        <option class="country-list" value="ES" label="Spain">ES</option>
-        <option class="country-list" value="IS" label="Iceland">IS</option>
-        <option class="country-list" value="IR" label="Iran">IR</option>
-    </select>
+  console.log(Object.keys(countryArray));
+  const countryArr = Object.keys(countryArray);
+  const optionsArray = [];
+  for (var i = 0; i <= countryArr.length; i++) {
+    optionsArray.push(`<option class="country-list" value="${key}">${countryArray[key]}</option>`);
+  }
+
+  const optionsHtml = Object.keys(countryArray).map(key => {
+    return `
+    <option class="country-list" value="${key}">${countryArray[key]}</option>`
+  });
+
+  const dropdownHtml = `
+  <select id="country-select">${optionsHtml.join('')}</select>
    `;
-  $('#country-list').html(countryInput);
+  $('#country-list').html(dropdownHtml);
+}
+
+if (!Object.keys) Object.keys = function(o) {
+  if (o !== Object(o))
+    throw new TypeError('Object.keys called on a non-object');
+  var k=[],p;
+  for (p in o) if (Object.prototype.hasOwnProperty.call(o,p)) k.push(p);
+  return k;
 }
 
 
 
-// function searchFunction() { 
-//   let filter, input, ul, li, a, i;
-//   input = $('country-search');
-//   filter = input.value.toUpperCase();
-//   ul = $('country-list');
-//   li = $('country');
+
 
 //   for (i = 0; i < li.length; i++) {
 //     a = li{i}.$("a") [0];
