@@ -22,17 +22,21 @@ function getWebcamAPIData() {
   $.ajax({
   url: `https://webcamstravel.p.mashape.com/webcams/list/country=${countryKeySelected}`,
   data: {show:'webcams:image,location,player'},
-  orderby: 'popularity',
+  orderby: 'popularity, asc',
+  limit: 3,
   dataType: 'json',
   type: 'GET',
   headers: {"X-Mashape-Key": 'cgDecNwco7mshVPaItCd9ogfs5nnp1OCnOVjsn8Yn430nwywin',
   "X-Mashape-Host": 'webcamstravel.p.mashape.com'},
     success: function(data) {
       console.log(data);
-      console.log(data.result.webcams["0"].title);
+      // console.log(data.result.webcams["0"].title);
+
+
       // console.log(webcam.location.city);
       
       let webcamArray = data.result.webcams.map(function(webcam) {
+        console.log('mapping is working');
         if (data.result.total > 0) { 
         return `
         <h3>${webcam.title}</h3>
@@ -40,10 +44,11 @@ function getWebcamAPIData() {
         `;
         }
       });
-      if(webcamArray.length > 0) {
-        $('#js-cam-results').html(webcamArray.join(''));
-      } else {
+      if(webcamArray.length == 0) {
         $('#js-cam-results').html("<p>This country has no webcams yet :( </p>");
+        
+      } else {
+        $('#js-cam-results').html(webcamArray.join(''));
       }
     }
   });
@@ -56,7 +61,11 @@ function getWebcamAPIData() {
         const settings = {
           part: 'snippet',
           key: APIkey,
-          q: `Travel tips for ${countryNameSelected}`
+          q: `Travel tips for ${countryNameSelected}`,
+          maxResults: 3,
+          type: 'video',
+          order: 'Relevance',
+          relevanceLanguage: 'en'
         };
         $.getJSON(YOUTUBE_SEARCH_URL, settings, callback);
       });
