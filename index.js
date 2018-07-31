@@ -20,10 +20,9 @@ function getWebcamAPIData() {
     let countryKeySelected = $('#country-select').val();
     let countryNameSelected = $("#country-select").text();
   $.ajax({
-  url: `https://webcamstravel.p.mashape.com/webcams/list/country=${countryKeySelected}`,
+  url: `https://webcamstravel.p.mashape.com/webcams/list/limit=9/orderby=new/country=${countryKeySelected}`,
   data: {show:'webcams:image,location,player'},
   orderby: 'popularity, asc',
-  limit: 3,
   dataType: 'json',
   type: 'GET',
   headers: {"X-Mashape-Key": 'cgDecNwco7mshVPaItCd9ogfs5nnp1OCnOVjsn8Yn430nwywin',
@@ -31,16 +30,13 @@ function getWebcamAPIData() {
     success: function(data) {
       console.log(data);
       // console.log(data.result.webcams["0"].title);
-
-
-      // console.log(webcam.location.city);
       
       let webcamArray = data.result.webcams.map(function(webcam) {
-        console.log('mapping is working');
         if (data.result.total > 0) { 
         return `
-        <h3>${webcam.title}</h3>
-        <img width="400 height="200" src="${webcam.image.daylight.preview}">
+
+        <h4>${webcam.title}</h4>
+        <img width="400 height="200" class="webcams" src="${webcam.image.daylight.preview}">
         `;
         }
       });
@@ -48,11 +44,12 @@ function getWebcamAPIData() {
         $('#js-cam-results').html("<p>This country has no webcams yet :( </p>");
         
       } else {
+        $('#js-cam-results-text').html(`<h4>Webcam Results for ${data.result.webcams[0].location.country}</h4>`);
         $('#js-cam-results').html(webcamArray.join(''));
       }
     }
   });
-});
+  });
 }
 
   function getDataFromAPI(callback) {
@@ -61,7 +58,7 @@ function getWebcamAPIData() {
         const settings = {
           part: 'snippet',
           key: APIkey,
-          q: `Travel tips for ${countryNameSelected}`,
+          q: `Fun facts about the country ${countryNameSelected}`,
           maxResults: 3,
           type: 'video',
           order: 'Relevance',
@@ -83,7 +80,9 @@ function generateResult(result) {
 }
 
 function displayYouTubeSearchData(data) {
+  let countryNameSelected = $('#country-select option:selected').text();
   const results = data.items.map((item, index) => generateResult(item));
+  $('#js-results-text').html(`<h4>Video Results for ${countryNameSelected}</h4>`);
   $('#js-results').html( results );
 }
 
@@ -97,7 +96,3 @@ $(document).ready(function() {
 
 // <iframe class="cam-results col-4" aria-label="Webcam Result" src="${webcam.player.day.embed}" 
 // height="200" width="400" style="border:none"></iframe>
-
- // <video width="400" height="200" controls>
- //        <source src="${webcam.player.day.embed}">
- //      </video>

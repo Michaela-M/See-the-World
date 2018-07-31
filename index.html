@@ -7,16 +7,18 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   </head>
+
   <body>
-    <header role="banner"><h1 class="col-12">See the World</h1></header>
+    <header role="banner" class="header-text"><h1 class="col-12">See the World</h1>
+      <section role="region">
+        <div class="header-text col-4 list-section" id="country-list"></div>
+      </section>
+    </header>
 
-    <section role="region">
-      <div class="col-4 list-section" id="country-list"></div>
-    </section>
-
+    <section role="region" id="js-cam-results-text" role="alert" aria-live="polite"></section>
     <section role="region" id="js-cam-results" role="alert" aria-live="polite"></section>
-
-    <section id='js-results' role="alert" aria-live="polite"></section>
+    <section role="region" id='js-results-text' role="alert" aria-live="polite"></section>
+    <section role="region" id='js-results' role="alert" aria-live="polite"></section>
 
     <script type="text/javascript" src="store.js"></script>
     <script type="text/javascript" src="index.js"></script>

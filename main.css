@@ -1,4 +1,4 @@
-/** {
+* {
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 	text-decoration: none;
@@ -7,12 +7,24 @@
 	text-align: center;
 }
 
+/*header {
+	position: absolute;
+	background-image: url('https://image.ibb.co/n7p4jT/ishan_seefromthesky_403804_unsplash_1.jpg');
+	left: 0; right: 0; top: 0; bottom: 0;
+	background-size: cover;
+	background-position: center center;
+}*/
+
 .cam-results {
 	padding: 5px;
 }
 
-.country-search {
-	background-image: url(https://image.ibb.co/n53WjJ/if_search_find_magnify_glass_2203508.png);
+.country-select {
+	border-radius: 3px;
+	border-color: blue;
+}
+
+.country-list {
 	font-size: 16px;
 	padding: 12px 20px 12px 40px
 	border: 1px solid #ddd;
@@ -24,25 +36,15 @@
 	margin: 0;
 }
 
-.country-search:hover .country-list,
-.country-search:focus .country-list {
-	display: block
+.country-list:hover,
+.country-list:focus {
+    color: red;
 }
 
-.country {
-	background-color: #fff;
-	padding: 2px;
-	font-size: 16px;
-	color: black;
-	display: block;
-	width: 180px;
+.webcams {
+	display: inline;
 }
 
-.country:hover {
-	background-color: #eee;
-}
+/*@media screen and (min-width: 640px) {
 
-.list-section {
-	padding-bottom: 30px;
-}
-*/
+}*/
