@@ -6,11 +6,11 @@ function displayList() {
   console.log(Object.keys(countryArray));
   const optionsHtml = Object.keys(countryArray).map((key, index) => {
     return `
-    <option class="country-list" value="${key}">${countryArray[key]}</option>`;
+    <option class="country-list center" value="${key}">${countryArray[key]}</option>`;
   });
 
   const dropdownHtml = `
-  <select id="country-select">${optionsHtml.join('')}</select>
+  <select id="country-select" class="center">${optionsHtml.join('')}</select>
    `;
   $('#country-list').html(dropdownHtml);
 }
@@ -44,7 +44,7 @@ function getWebcamAPIData() {
         $('#js-cam-results').html("<p>This country has no webcams yet :( </p>");
         
       } else {
-        $('#js-cam-results-text').html(`<h4>Webcam Results for ${data.result.webcams[0].location.country}</h4>`);
+        $('#js-cam-results-text').html(`<h4 class="cam-results-for">Webcam Results for ${data.result.webcams[0].location.country}</h4>`);
         $('#js-cam-results').html(webcamArray.join(''));
       }
     }
@@ -59,7 +59,7 @@ function getWebcamAPIData() {
           part: 'snippet',
           key: APIkey,
           q: `Fun facts about the country ${countryNameSelected}`,
-          maxResults: 3,
+          maxResults: 6,
           type: 'video',
           order: 'Relevance',
           relevanceLanguage: 'en'

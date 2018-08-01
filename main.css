@@ -2,9 +2,6 @@
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 	text-decoration: none;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
 }
 
 /*header {
@@ -14,6 +11,12 @@
 	background-size: cover;
 	background-position: center center;
 }*/
+
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
 
 .cam-results {
 	padding: 5px;
@@ -40,9 +43,19 @@
 .country-list:focus {
     color: red;
 }
-
+/*
 .webcams {
 	display: inline;
+}*/
+
+.cam-results-for {
+	text-align: center;
+	padding: 5px;
+	display: block;
+}
+
+iframe {
+	display: block;
 }
 
 /*@media screen and (min-width: 640px) {
