@@ -1,0 +1,63 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+}
+
+/*header {
+	position: absolute;
+	background-image: url('https://image.ibb.co/n7p4jT/ishan_seefromthesky_403804_unsplash_1.jpg');
+	left: 0; right: 0; top: 0; bottom: 0;
+	background-size: cover;
+	background-position: center center;
+}*/
+
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.cam-results {
+	padding: 5px;
+}
+
+.country-select {
+	border-radius: 3px;
+	border-color: blue;
+}
+
+.country-list {
+	font-size: 16px;
+	padding: 12px 20px 12px 40px
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+}
+
+.country-list {
+	padding: 0;
+	margin: 0;
+}
+
+.country-list:hover,
+.country-list:focus {
+    color: red;
+}
+/*
+.webcams {
+	display: inline;
+}*/
+
+.cam-results-for {
+	text-align: center;
+	padding: 5px;
+	display: block;
+}
+
+iframe {
+	display: block;
+}
+
+/*@media screen and (min-width: 640px) {
+
+}*/
