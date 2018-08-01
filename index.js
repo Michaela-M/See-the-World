@@ -58,7 +58,7 @@ function getWebcamAPIData() {
         const settings = {
           part: 'snippet',
           key: APIkey,
-          q: `Fun facts about the country ${countryNameSelected}`,
+          q: `Travel Facts about the country ${countryNameSelected}`,
           maxResults: 6,
           type: 'video',
           order: 'Relevance',
@@ -72,7 +72,7 @@ function getWebcamAPIData() {
 function generateResult(result) {
   if(result.id.kind === "youtube#video") {
     return `
-    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'></iframe><br />`;
+    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
   } else if(result.id.kind === "youtube#channel") {
     return `
     <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}' height='200' width='400'></a>`;
