@@ -72,7 +72,7 @@ function getWebcamAPIData() {
 function generateResult(result) {
   if(result.id.kind === "youtube#video") {
     return `
-    <iframe class="results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
+    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'></iframe><br />`;
   } else if(result.id.kind === "youtube#channel") {
     return `
     <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}' height='200' width='400'></a>`;
