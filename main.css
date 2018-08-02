@@ -43,20 +43,29 @@
 .country-list:focus {
     color: red;
 }
-/*
-.webcams {
-	display: inline;
-}*/
 
-.cam-results-for {
-	text-align: center;
-	padding: 5px;
-	display: block;
+.webcams {
+	margin-top: 10px;
 }
 
-iframe {
+.cam-results-for {
+	text-align: left;
+	padding-bottom: 5px;
+}
+
+.vid-results {
 	display: block;
-	margin-top: 20px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+.cam-titles {
+	margin-top: 4px;
+	margin-bottom: 3px;
+}
+
+.video-col-title {
+	margin-bottom: 55px;
 }
 
 /*@media screen and (min-width: 886px) {
