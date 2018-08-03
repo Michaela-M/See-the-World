@@ -4,18 +4,34 @@
 	text-decoration: none;
 }
 
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
 header {
-	position: absolute;
+	position: relative;
 	background-image: url('https://image.ibb.co/n7p4jT/ishan_seefromthesky_403804_unsplash.jpg');
 	left: 0; right: 0; top: 0; bottom: 0;
 	background-size: cover;
 	background-position: center center;
+	height: 100%;
+}
+
+.page-title {
+	margin-top: 0;
+}
+
+.page-title, .description {
+	position: relative;
+	transform: translate(0, 50%);
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .results {
-	position: absolute;
+	position: relative;
 	left: 50%; 
-	top: 150px;
 	transform: translate(-50%);
 }
 
