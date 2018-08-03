@@ -34,7 +34,7 @@ function getWebcamAPIData() {
         return `
         <h4 class=cam-titles>${webcam.location.city}, ${webcam.location.region}</h4>
 
-        <iframe width="400" height="200" class="webcams" src="${webcam.player.day.embed}"></iframe>
+        <iframe class="webcams" src="${webcam.player.day.embed}"></iframe>
         `;
         }
       });
@@ -70,10 +70,10 @@ function getDataFromAPI(callback) {
 function generateResult(result) {
   if(result.id.kind === "youtube#video") {
     return `
-    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" height='200' width='400' title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
+    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
   } else if(result.id.kind === "youtube#channel") {
     return `
-    <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}' height='200' width='400'></a>`;
+    <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}'></a>`;
   }
 }
 
