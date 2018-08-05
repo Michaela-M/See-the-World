@@ -62,7 +62,6 @@ function getDataFromAPI(callback) {
     });
 }
 
-
 function generateResult(result) {
   if(result.id.kind === "youtube#video") {
     return `
@@ -82,14 +81,11 @@ function displayYouTubeSearchData(data) {
 
 function scrollTo() {
 $("#country-select").on('change', function() {
-  console.log(`'scrollTo' ran`);
   $('html, body').animate({
       scrollTop: $('.results').offset().top
   }, 1000);
 });
 }
-
-
 
 $(document).ready(function() {
   displayList();
@@ -97,4 +93,3 @@ $(document).ready(function() {
   getWebcamAPIData();
   getDataFromAPI(displayYouTubeSearchData);
 });
-

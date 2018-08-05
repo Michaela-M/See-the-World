@@ -232,7 +232,7 @@ const countryArray = {
     'AE' : 'United Arab Emirates',
     'GB' : 'United Kingdom',
     'US' : 'United States',
-    'UM' : 'United States Outlying Islands',
+    'UM' : 'US Outlying Islands',
     'UY' : 'Uruguay',
     'UZ' : 'Uzbekistan',
     'VU' : 'Vanuatu',
