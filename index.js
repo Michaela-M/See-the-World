@@ -2,17 +2,13 @@ const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 const APIkey = 'AIzaSyAh6hD7Q7RpUpIMVwPvmRH-pH4nByXYHis';
 
 function displayList() {
-  console.log('`displayList` ran');
-  console.log(Object.keys(countryArray));
   const optionsHtml = Object.keys(countryArray).map((key, index) => {
     return `
     <option class="country-list center" value="${key}">${countryArray[key]}</option>`;
   });
 
   const dropdownHtml = `
-  <div class="drop-down-div">
   <select id="country-select" class="center drop">${optionsHtml.join('')}</select>
-  </div>
    `;
   $('#country-list').html(dropdownHtml);
 }
@@ -40,9 +36,9 @@ function getWebcamAPIData() {
       });
       if(webcamArray.length == 0) {
         $('#js-cam-results-text').html('');
-        $('#js-cam-results').html("<p>This country has no webcams yet :( </p>");
+        $('#js-cam-results').html("<h4>This country has no webcams yet :( </h4>");
       } else {
-        $('#js-cam-results-text').html(`<h4 class="cam-results-for">Webcam Results for ${data.result.webcams[0].location.country}</h4>`);
+        $('#js-cam-results-text').html(`<h3 id="scrollTo" class="cam-results-for">Webcam Results for ${data.result.webcams[0].location.country}</h3>`);
         $('#js-cam-results').html(webcamArray.join(''));
       }
     }
@@ -66,7 +62,6 @@ function getDataFromAPI(callback) {
     });
 }
 
-
 function generateResult(result) {
   if(result.id.kind === "youtube#video") {
     return `
@@ -80,12 +75,21 @@ function generateResult(result) {
 function displayYouTubeSearchData(data) {
   let countryNameSelected = $('#country-select option:selected').text();
   const results = data.items.map((item, index) => generateResult(item));
-  $('#js-results-text').html(`<h4 class="video-col-title">Video Results for ${countryNameSelected}</h4>`);
+  $('#js-results-text').html(`<h3 class="video-col-title">Video Results for ${countryNameSelected}</h3>`);
   $('#js-results').html( results );
+}
+
+function scrollTo() {
+$("#country-select").on('change', function() {
+  $('html, body').animate({
+      scrollTop: $('.results').offset().top
+  }, 1000);
+});
 }
 
 $(document).ready(function() {
   displayList();
+  scrollTo();
   getWebcamAPIData();
   getDataFromAPI(displayYouTubeSearchData);
 });
