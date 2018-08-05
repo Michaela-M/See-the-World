@@ -1,6 +1,7 @@
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 const APIkey = 'AIzaSyAh6hD7Q7RpUpIMVwPvmRH-pH4nByXYHis';
 
+//Create dropdown menu from store.js and render
 function displayList() {
   const optionsHtml = Object.keys(countryArray).map((key, index) => {
     return `
@@ -8,11 +9,13 @@ function displayList() {
   });
 
   const dropdownHtml = `
-  <select id="country-select" class="center drop">${optionsHtml.join('')}</select>
+  <label for="country-select"></label>
+  <select id="country-select" class="center drop" aria-label="Country List">${optionsHtml.join('')}</select>
    `;
   $('#country-list').html(dropdownHtml);
 }
 
+//calls the webcam API and renders webcam results
 function getWebcamAPIData() {
   $('#country-list').on('change', 'select', event => {
     let countryKeySelected = $('#country-select').val();
@@ -46,6 +49,7 @@ function getWebcamAPIData() {
   });
 }
 
+//calls YouTube API 
 function getDataFromAPI(callback) {
    $('#country-list').on('change', 'select', event => {
       let countryNameSelected = $('#country-select option:selected').text();
@@ -63,15 +67,11 @@ function getDataFromAPI(callback) {
 }
 
 function generateResult(result) {
-  if(result.id.kind === "youtube#video") {
     return `
     <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
-  } else if(result.id.kind === "youtube#channel") {
-    return `
-    <a href="https://www.youtube.com/user/${result.snippet.channelTitle}" target="_blank" rel="noopener" aria-label='YouTube Channel'><img class='results' src='${result.snippet.thumbnails.medium.url}' alt='${result.snippet.title}'></a>`;
-  }
 }
 
+//renders YouTube results
 function displayYouTubeSearchData(data) {
   let countryNameSelected = $('#country-select option:selected').text();
   const results = data.items.map((item, index) => generateResult(item));
@@ -79,6 +79,7 @@ function displayYouTubeSearchData(data) {
   $('#js-results').html( results );
 }
 
+//scrolls to results when country is clicked
 function scrollTo() {
 $("#country-select").on('change', function() {
   $('html, body').animate({
