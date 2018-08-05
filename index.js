@@ -21,7 +21,7 @@ function getWebcamAPIData() {
     let countryKeySelected = $('#country-select').val();
     let countryNameSelected = $("#country-select").text();
   $.ajax({
-  url: `https://webcamstravel.p.mashape.com/webcams/list/limit=9/orderby=popularity,desc/category=mountain/country=${countryKeySelected}`,
+  url: `https://webcamstravel.p.mashape.com/webcams/list/limit=6/orderby=popularity,desc/category=mountain/country=${countryKeySelected}`,
   data: {show:'webcams:image,location,player'},
   dataType: 'json',
   type: 'GET',
@@ -31,9 +31,11 @@ function getWebcamAPIData() {
       let webcamArray = data.result.webcams.map(function(webcam) {
         if (data.result.total > 0) { 
         return `
+        <div class="cam-div">
         <h4 class=cam-titles>${webcam.location.city}, ${webcam.location.region}</h4>
 
         <iframe class="webcams" src="${webcam.player.day.embed}"></iframe>
+        </div>
         `;
         }
       });
@@ -68,7 +70,9 @@ function getDataFromAPI(callback) {
 
 function generateResult(result) {
     return `
-    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" title='${result.snippet.title}' aria-label='YouTube Video'></iframe>`;
+    <div class="vid-div">
+    <iframe class="vid-results" src="https://www.youtube.com/embed/${result.id.videoId}" title='${result.snippet.title}' aria-label='YouTube Video'></iframe>
+    </div>`;
 }
 
 //renders YouTube results
@@ -83,7 +87,7 @@ function displayYouTubeSearchData(data) {
 function scrollTo() {
 $("#country-select").on('change', function() {
   $('html, body').animate({
-      scrollTop: $('.results').offset().top
+      scrollTop: $('#js-cam-results').offset().top
   }, 1000);
 });
 }

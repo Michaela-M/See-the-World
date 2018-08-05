@@ -52,14 +52,7 @@ header {
 	text-align: center;
 }
 
-.webcams, .vid-results {
-	max-width: 100%;
-	height: auto;
-}
 
-.cam-results {
-	padding: 5px;
-}
 
 .country-list {
 	font-size: 12px;
@@ -79,10 +72,6 @@ header {
 	max-width: 280px;
 }
 
-.webcams {
-	margin-top: 10px;
-}
-
 .cam-results-for {
 	text-align: left;
 	padding-bottom: 5px;
@@ -90,15 +79,14 @@ header {
 }
 
 .cam-titles {
-	margin-top: 4px;
+	margin-top: 0px;
 	margin-bottom: 3px;
 	font-size: 18px;
 }
 
 .vid-results {
 	display: block;
-	margin-top: 40px;
-	margin-bottom: 45px;
+	margin: 10px;
 	margin-right: 0px;
 }
 
@@ -109,6 +97,17 @@ header {
 .footer {
 	font-size: 12px;
 	margin-bottom: 3px;
+	background-color: #f4fdff;
+}
+
+@media screen and (max-width: 639px) {
+.webcams, .vid-results {
+	max-width: 100%;
+	height: auto;
+}
+.cam-div, .vid-div {
+	max-height: 200px;
+}
 }
 
 
@@ -120,16 +119,29 @@ header {
 }
 
 .webcams, .vid-results {
-	width: 300px;
-	height: auto;
+	width: 280px;
+	height: 170px;
 }
 
 .video-col-title {
-	margin-bottom: 63px;
+	margin-bottom: 69px;
 }
 
 .page-title {
 	font-size: 80px;
+}
+
+.cam-div  {
+	height: 230px;
+}
+
+.vid-div {
+	height: 170px;
+	margin-top: 40px;
+}
+.cam-results-for {
+	padding-bottom: 0px;
+	margin-bottom: 10px;
 }
 }
 
@@ -150,7 +162,20 @@ header {
 }
 
 .video-col-title {
-	margin-bottom: 63px;
+	margin-bottom: 58px;
+}
+
+.cam-div {
+	height: 240px;
+}
+
+.vid-div {
+	height: 200px;
+	margin-top: 40px;
+}
+
+.cam-results-for {
+	padding-bottom: 26px;
 }
 }
 
@@ -171,6 +196,18 @@ header {
 }
 
 .video-col-title {
-	margin-bottom: 63px;
+	margin-bottom: 58px;
+}
+.cam-div {
+	height: 275px;
+}
+
+.vid-div {
+	height: 240px;
+	margin-top: 35px;
+}
+
+.cam-results-for {
+	padding-bottom: 26px;
 }
 }
