@@ -8,6 +8,12 @@ body, html {
 	margin: 0;
 }
 
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
 h2, h3, h4, p, option {
 	font-family: 'Open Sans', sans-serif;
 }
@@ -45,14 +51,6 @@ header {
 	transform: translate(-50%);
 	background-color: #f4fdff;
 }
-
-.center {
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-}
-
-
 
 .country-list {
 	font-size: 12px;
@@ -109,7 +107,6 @@ header {
 	max-height: 200px;
 }
 }
-
 
 @media screen and (min-width: 640px) {
 .country-list {
