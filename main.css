@@ -184,8 +184,8 @@ header {
 }
 
 .webcams, .vid-results {
-	width: 500px;
-	height: 240px;
+	width: 450px;
+	height: 225px;
 }
 
 .page-title {
@@ -193,18 +193,20 @@ header {
 }
 
 .video-col-title {
-	margin-bottom: 58px;
+	margin-bottom: 62px;
 }
 .cam-div {
-	height: 275px;
+	height: 255px;
+	margin-top: 3px;
 }
 
 .vid-div {
-	height: 240px;
-	margin-top: 35px;
+	height: 225px;
+	margin-top: 33px;
 }
 
 .cam-results-for {
 	padding-bottom: 26px;
 }
+
 }
